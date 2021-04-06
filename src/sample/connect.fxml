@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: #AEEAEE; -fx-background-radius: 120; -fx-border-radius: 120;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.connect">
+   <children>
+      <Label layoutX="61.0" layoutY="14.0" prefHeight="66.0" prefWidth="302.0" text="Терминал подключения к &#10;MariaDB" textAlignment="CENTER">
+         <font>
+            <Font name="Georgia" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="165.0" layoutY="226.0" prefHeight="24.0" prefWidth="71.0" text="Логин" textAlignment="CENTER">
+         <font>
+            <Font name="Georgia" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="162.0" layoutY="309.0" prefHeight="24.0" prefWidth="77.0" text="Пароль">
+         <font>
+            <Font name="Georgia" size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="login_txt" layoutX="109.0" layoutY="269.0" promptText="Ваш логин">
+         <font>
+            <Font name="Georgia" size="14.0" />
+         </font>
+      </TextField>
+      <Button fx:id="input" layoutX="149.0" layoutY="414.0" mnemonicParsing="false" text="Войти">
+         <font>
+            <Font name="Georgia" size="24.0" />
+         </font>
+      </Button>
+      <PasswordField fx:id="passvd_txt" layoutX="109.0" layoutY="355.0" prefHeight="25.0" prefWidth="182.0" promptText="Ваш пароль">
+         <font>
+            <Font name="Georgia" size="14.0" />
+         </font>
+      </PasswordField>
+      <ChoiceBox fx:id="valueRole" layoutX="110.0" layoutY="176.0" prefHeight="26.0" prefWidth="182.0">
+      <items>
+         <FXCollections fx:factory="observableArrayList">
+            <String fx:value="Администратор" />
+            <String fx:value="Пользователь" />
+         </FXCollections>
+      </items>
+      </ChoiceBox>
+      <Label layoutX="114.0" layoutY="136.0" prefHeight="29.0" prefWidth="196.0" text="Выберите роль">
+         <font>
+            <Font name="Georgia" size="24.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
