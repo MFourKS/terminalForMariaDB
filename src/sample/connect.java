@@ -1,7 +1,11 @@
 package sample;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.beans.value.ChangeListener;
@@ -41,13 +45,29 @@ public class connect {
     private MenuItem members_but;
 
     @FXML
+    private Button back;
+
+    @FXML
     private TextField login_txt;
 
     @FXML
     private PasswordField passvd_txt;
 
+    PrintWriter pw= new PrintWriter(System.out, true);
+    public static Connection cont;
+
+    public static void alert(String s) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Warning alert");
+
+        // Header Text: null
+        alert.setHeaderText(null);
+        alert.setContentText(s);
+
+        alert.showAndWait();
+    }
     @FXML
-    void initialize() {
+    void initialize() throws SQLException {
         System.gc();
 
         valueRole.valueProperty().addListener(new ChangeListener<String>() {
@@ -60,17 +80,31 @@ public class connect {
         });
 
         input.setOnAction(actionEvent -> {
+            if ( value == 0 ){
+                alert("Выберите роль");
+            }
             if ( value == 1 ) {
+                    // openNewFrame("adminFrame.fxml",input);
+                    String url = "jdbc:mysql://localhost:3306/mysql";
+                    String name_user = login_txt.getText();
+                    String pass_user = passvd_txt.getText();
+                    try {
+                        Class.forName("com.mysql.jdbc.Driver");
+                    } catch (Exception e) {
+                        alert("ОШИБКА подключения драйвера!");
+                    }
+                    try {
+                        cont = DriverManager.getConnection(url, name_user, pass_user);
+                        openNewFrame("adminFrame1.fxml", input);
+                    } catch (Exception e) {
+                        alert("Неверный логин или пароль");
+                    }
 
-                openNewFrame("adminFrame.fxml",input);
-
-                value = 0;
             }
             if ( value == 2 ) {
 
                 openNewFrame("memberFrame.fxml",input);
 
-                value = 0;
             }
         });
 
