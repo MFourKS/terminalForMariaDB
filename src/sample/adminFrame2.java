@@ -51,6 +51,7 @@ public class adminFrame2 extends connect{
                 i++;
             }
             output_txt.setText(name);
+            name = " ";
         }
         catch (Exception e){
             output_txt.setText("Базы данных не найдены");
